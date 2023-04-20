@@ -13,7 +13,7 @@ class NotesService {
     const updatedAt = createdAt;
 
     const newNote = {
-      title, tags, body, id, createdAt, updatedAt,
+      title, tags, body, id, createdAt, updatedAt
     };
 
     this._notes.push(newNote);
@@ -34,7 +34,7 @@ class NotesService {
   getNoteById(id) {
     const note = this._notes.filter((n) => n.id === id)[0];
     if (!note) {
-      throw new Error('Catatan tidak ditemukan');
+      throw new NotFoundError('Catatan tidak ditemukan');
     }
     return note;
   }
@@ -53,17 +53,15 @@ class NotesService {
       title,
       tags,
       body,
-      updatedAt,
+      updatedAt
     };
   }
 
   deleteNoteById(id) {
     const index = this._notes.findIndex((note) => note.id === id);
-
     if (index === -1) {
       throw new NotFoundError('Catatan gagal dihapus. Id tidak ditemukan');
     }
-
     this._notes.splice(index, 1);
   }
 }
