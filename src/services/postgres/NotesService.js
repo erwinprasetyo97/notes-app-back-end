@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const { nanoid } = require('nanoid');
 const { Pool } = require('pg');
 const InvariantError = require('../../exceptions/InvariantError');
@@ -33,7 +34,7 @@ class NotesService {
     return result.rows.map(mapDBToModel);
   }
 
-  async getNotesById(id) {
+  async getNoteById(id) {
     const query = {
       text: 'SELECT * FROM notes WHERE id = $1',
       values: [id]
