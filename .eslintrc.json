@@ -13,6 +13,7 @@
         "no-console": "off",
         "linebreak-style": "off",
         "no-underscore-dangle": "off",
+        "import/no-extraneous-dependencies" : "off",
         "indent" : ["error", 2],
         "quotes" : ["error", "single"],
         "semi" : ["error", "always"],
