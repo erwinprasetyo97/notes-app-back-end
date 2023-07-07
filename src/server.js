@@ -23,7 +23,7 @@ const AuthenticationsValidator = require('./validator/authentications');
 const init = async () => {
   const notesService = new NotesService();
   const usersService = new UsersService();
-  const authencticatonsService = new AuthenticationsService();
+  const authenticationsService = new AuthenticationsService();
 
   const server = Hapi.server({
     port: process.env.PORT,
@@ -77,7 +77,7 @@ const init = async () => {
     {
       plugin: authentications,
       options: {
-        authencticatonsService,
+        authenticationsService,
         usersService,
         tokenManager: TokenManager,
         validator: AuthenticationsValidator,
