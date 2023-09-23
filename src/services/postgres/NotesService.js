@@ -99,7 +99,7 @@ class NotesService {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new NotFoundError('Resource yang anda minta tidak ditemukan');
+      throw new NotFoundError('Catatan tidak ditemukan');
     }
 
     const note = result.rows[0];
@@ -123,6 +123,15 @@ class NotesService {
         throw error;
       }
     }
+  }
+
+  async getUsersByUsername(username) {
+    const query = {
+      text: 'SELECT id, username, fullname FROM users WHERE username LIKE $1',
+      values: [`%${username}%`],
+    };
+    const result = await this._pool.query(query);
+    return result.rows;
   }
 }
 

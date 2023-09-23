@@ -4,6 +4,8 @@ class ExportsHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
+
+    this.postExportNotesHandler = this.postExportNotesHandler.bind(this);
   }
 
   async postExportNotesHandler(request, h) {
@@ -33,10 +35,10 @@ class ExportsHandler {
         return response;
       }
 
-      // SERVER ERROR
+      // Server ERROR!
       const response = h.response({
         status: 'error',
-        message: 'Maaf, terjadi kegagalan pada server kami',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
       console.error(error);
